@@ -5,6 +5,11 @@ Verificato il corretto funzionamento del nostro codice, spostiamo la logica in u
 include 'functions.php';
 ?>
 
+<?php
+session_start();
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,8 +88,10 @@ include 'functions.php';
       <input type="number" id="length" name="length" min="3" max="20" required>
       <input type="submit" value="Genera password">
     </form>
-
   </div>
+
+
+
 </body>
 
 </html>
