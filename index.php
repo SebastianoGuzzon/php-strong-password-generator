@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-<title>Generatore di Password</title>
 
 <head>
+
+  <title>Generatore di Password</title>
+
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      background-color: #D61013;
       padding: 20px;
     }
 
@@ -21,7 +23,7 @@
     }
 
     input[type=number] {
-      width: 100%;
+      width: 80%;
       padding: 10px;
       margin-top: 10px;
       margin-bottom: 20px;
@@ -56,7 +58,7 @@
   if (isset($_GET['length'])) {
     $length = $_GET['length'];
     $password = generate_password($length);
-    echo "<p>La tua password: " . $password . "</p>";
+    echo "<h1>La tua password: " . $password . "</h1>";
   }
   ?>
 </body>
