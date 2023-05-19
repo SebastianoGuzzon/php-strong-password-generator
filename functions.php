@@ -27,9 +27,24 @@ if (isset($_GET['length'])) {
   $password = generatePassword($length);
 ?>
 
-<div class="password">
+<!-- <div class="password">
   La password generata è: <?php echo $password; ?>
-</div>
+</div> -->
+
+<!-- **Milestone 3 (BONUS)**
+Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $\_SESSION recupererà la password da mostrare all’utente. -->
+
+
+<?php
+  // Salva la password nella sessione
+  $_SESSION['password'] = $password;
+
+  // Reindirizza alla pagina password.php
+  header('Location: password.php');
+  exit;
+  ?>
+
+
 
 <?php
 }
