@@ -1,97 +1,64 @@
-<!-- **Milestone 2**
-Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file _functions.php_ che includeremo poi nella pagina principale -->
-
-<?php
-include 'functions.php';
-?>
-
-<?php
-session_start();
-?>
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<title>Generatore di Password</title>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHP Strong Password Generator</title>
+
   <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
 
-  .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      margin: 0 auto;
+    }
 
-  h2 {
-    text-align: center;
-  }
+    input[type=number] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
 
-  form {
-    margin-top: 20px;
-    text-align: center;
-  }
+    input[type=submit] {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
 
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-
-  input[type="number"] {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-  }
-
-  input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-
-  .password {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-  }
+    input[type=submit]:hover {
+      background-color: #0056b3;
+    }
   </style>
-
-
 </head>
 
 <body>
-  <div class="container">
-    <h2>Generatore di password sicure</h2>
+  <form action="index.php" method="get">
+    <label for="length">Lunghezza della Password:</label><br>
+    <input type="number" id="length" name="length" min="1"><br>
+    <input type="submit" value="Genera Password">
+  </form>
+  <?php
+  include 'functions.php';
 
-    <!--   **Milestone 1**
-    // Creare un form che invii in GET la lunghezza della password. -->
-
-    <form action="index.php" method="get">
-      <label for="length">Lunghezza password:</label>
-      <input type="number" id="length" name="length" min="3" max="20" required>
-      <input type="submit" value="Genera password">
-    </form>
-  </div>
-
-
-
+  if (isset($_GET['length'])) {
+    $length = $_GET['length'];
+    $password = generate_password($length);
+    echo "<p>La tua password: " . $password . "</p>";
+  }
+  ?>
 </body>
 
 </html>

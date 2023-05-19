@@ -1,29 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password </title>
+  <title>La tua Password</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+
+  .password-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .password {
+    font-size: 20px;
+    color: #007BFF;
+    font-weight: bold;
+  }
+  </style>
 </head>
 
 <body>
-
-
-  <div class="container">
-    <h2>Generatore di password sicure</h2>
-
-    <div class="password">
-      La password generata è: <?php echo $_SESSION['password']; ?>
-    </div>
+  <div class="password-container">
+    <?php
+        session_start();
+        if (isset($_SESSION['password'])) {
+            echo "<p class='password'>" . $_SESSION['password'] . "</p>";
+        } else {
+            echo "Nessuna password generata.";
+        }
+        ?>
   </div>
-
-  <?php
-  session_start();
-  ?>
-
-
 </body>
 
 </html>
