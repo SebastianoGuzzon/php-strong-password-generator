@@ -9,6 +9,15 @@
 </head>
 
 <body>
+
+  <form action="index.php" method="get">
+    <label for="length">Lunghezza password:</label>
+    <input type="number" id="length" name="length" min="6" max="20" required>
+    <input type="submit" value="Genera password">
+  </form>
+
+
+
   <?php
   function generatePassword($length)
   {
